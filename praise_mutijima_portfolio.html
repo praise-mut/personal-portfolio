@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Praise Mutijima — Personal Portfolio</title>
+  <meta name="description" content="Praise Mutijima - Front-end Developer specializing in React, HTML, CSS, JavaScript. Based in Kigali, Rwanda. Building modern web applications and user interfaces." />
+  <title>Praise Mutijima — Front-end Developer | React Specialist</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
   <style>
     :root{
       --accent:#6C5CE7;
@@ -24,11 +26,21 @@
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr;gap:20px;padding:60px 0;align-items:center}
+    .hero-content{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+    .hero-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 8px 32px rgba(108,92,231,0.3)}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:32px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
     h1{margin:0;font-size:28px;line-height:1.4}
     h1 strong{font-size:36px;color:var(--accent);}
+    .hero-role{color:var(--accent);font-weight:600;margin:8px 0 0;font-size:18px}
+    .hero-location{color:var(--muted);margin:4px 0 0;display:flex;align-items:center;gap:6px}
     p.lead{color:var(--muted);margin:12px 0 0}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:600;margin-right:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:600;margin-right:8px;transition:all 0.2s ease}
+    .btn:hover{background:#5a4fcf;transform:translateY(-1px)}
+    .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+    .btn-outline:hover{background:var(--accent);color:white}
+    .social-links{display:flex;gap:12px;margin:16px 0 0}
+    .social-links a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.05);color:var(--muted);text-decoration:none;transition:all 0.2s ease}
+    .social-links a:hover{background:var(--accent);color:white;transform:translateY(-2px)}
 
     /* Sections */
     section{padding:48px 0}
@@ -49,8 +61,19 @@
     textarea{min-height:110px}
     footer{padding:24px 0;text-align:center;color:var(--muted);font-size:14px}
 
+    /* Focus and accessibility */
+    *:focus{outline:2px solid var(--accent);outline-offset:2px}
+    @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}
+    
     /* Responsive */
-    @media(max-width:880px){.projects{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero{padding:36px 0}.container{padding:16px}}
+    @media(max-width:880px){
+      .projects{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .hero{padding:36px 0}
+      .container{padding:16px}
+      .hero-content{grid-template-columns:1fr;text-align:center;gap:16px}
+      .hero-avatar{width:100px;height:100px;margin:0 auto}
+    }
   </style>
 </head>
 <body>
@@ -71,93 +94,125 @@
 
   <main>
     <!-- HOME -->
-    <section id="home">
+    <section id="home" aria-label="Introduction">
       <div class="container hero">
         <div class="hero-card">
-          <h1>Hi, I'm <strong>PRAISE MUTIJIMA</strong><br>And this is my Personal Portfolio</h1>
-          <p class="lead">Welcome — I'm a web developer who likes building clean, responsive sites. Explore my work below.</p>
-          <p style="margin-top:18px;">
-            <a class="btn" href="#projects">See Projects</a>
-            <a class="btn" href="CV_PRAISE.pdf" download>Download CV</a>
+          <div class="hero-content">
+            <img src="C:\Users\USER\Pictures\Screenshots\profile.jpg" alt="Praise Mutijima - Front-end Developer" class="hero-avatar" />
+            <div>
+              <h1>Hi, I'm <strong>PRAISE MUTIJIMA</strong></h1>
+              <p class="hero-role">Front-end Developer specializing in React</p>
+              <p class="hero-location">📍 Kigali, Rwanda</p>
+              <p class="lead">I build modern, responsive web applications with clean code and great user experiences. Passionate about creating digital solutions that make a difference.</p>
+              <div class="social-links">
+                <a href="https://github.com/praise-mut" target="_blank" rel="noopener" aria-label="GitHub Profile">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/praise-mut" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:24px;">
+            <a class="btn" href="#projects">View My Work</a>
+            <a class="btn btn-outline" href="#contact">Get In Touch</a>
           </p>
         </div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" aria-label="About Me">
       <div class="container grid-2">
         <div class="card">
           <h2>About Me</h2>
-          <p>I am a passionate web developer with a strong foundation in programming and web design. I enjoy creating websites that are not only functional but also visually appealing.</p>
-          <p style="color:var(--muted);margin-top:12px;">Currently open to front-end and full-stack projects. I like learning new tools and improving user experiences.</p>
+          <p>I'm a passionate front-end developer with expertise in React and modern web technologies. I specialize in creating responsive, user-friendly applications that solve real-world problems.</p>
+          <p style="color:var(--muted);margin-top:12px;">Currently pursuing my undergraduate degree in Information Management while building practical experience in web development. I'm always eager to learn new technologies and take on challenging projects.</p>
+          <p style="color:var(--muted);margin-top:12px;"><strong>Available for:</strong> Front-end development projects, React applications, and web design consulting.</p>
         </div>
         <div class="card">
-          <h3>Quick Facts</h3>
-          <ul style="color:var(--muted);margin:12px 0 0">
-            <li>Location: Kigali, Rwanda</li>
-            <li>Education: Information Management student</li>
-            <li>Tools: HTML, CSS, JavaScript, Git</li>
+          <h3>Education & Certifications</h3>
+          <ul style="color:var(--muted);margin:12px 0 0;list-style:none;padding:0">
+            <li style="margin-bottom:8px">🎓 <strong>Undergraduate Student</strong><br>Information Management</li>
+            <li style="margin-bottom:8px">🏆 <strong>NetOps 1</strong><br>Network Operations Certification</li>
+            <li style="margin-bottom:8px">📍 <strong>Based in:</strong> Kigali, Rwanda</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills">
+    <section id="skills" aria-label="Technical Skills">
       <div class="container">
-        <h2>Skills</h2>
+        <h2>Technical Skills</h2>
         <div class="card" style="margin-top:12px">
           <div class="skills">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
+            <span class="skill">React</span>
             <span class="skill">JavaScript</span>
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">Java</span>
+            <span class="skill">SQL</span>
+            <span class="skill">C Programming</span>
             <span class="skill">Responsive Design</span>
             <span class="skill">Git & GitHub</span>
-            <span class="skill">Bootstrap</span>
-            <span class="skill">SQL</span>
-            <span class="skill">Node.js (basic)</span>
+            <span class="skill">Web Design</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
+    <section id="projects" aria-label="Featured Projects">
       <div class="container">
-        <h2>Projects</h2>
+        <h2>Featured Projects</h2>
         <div class="projects" style="margin-top:12px">
           <article class="project">
-            <h4>Portfolio Website</h4>
-            <p>A clean, responsive portfolio built with HTML, CSS and JavaScript. This page you're viewing is an example.</p>
+            <h4>University Registration System</h4>
+            <p><strong>Role:</strong> Front-end Developer<br><strong>Tech Stack:</strong> HTML, CSS, JavaScript, SQL<br><strong>Impact:</strong> Streamlined student registration process with intuitive user interface.</p>
+            <p style="margin-top:8px"><a href="#contact" class="btn" style="padding:8px 12px;font-size:13px">Learn More</a></p>
+          </article>
+
+          <article class="project">
+            <h4>Web Design Portfolio</h4>
+            <p><strong>Role:</strong> Full-stack Developer<br><strong>Tech Stack:</strong> React, CSS3, JavaScript<br><strong>Impact:</strong> Created responsive, modern web designs with focus on user experience and accessibility.</p>
+            <p style="margin-top:8px"><a href="https://github.com/praise-mut" target="_blank" rel="noopener" class="btn" style="padding:8px 12px;font-size:13px">View Code</a></p>
+          </article>
+
+          <article class="project">
+            <h4>Personal Portfolio</h4>
+            <p><strong>Role:</strong> Front-end Developer<br><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript<br><strong>Impact:</strong> This responsive portfolio showcasing my skills and projects with modern design principles.</p>
             <p style="margin-top:8px"><a href="#contact" class="btn" style="padding:8px 12px;font-size:13px">Get in touch</a></p>
-          </article>
-
-          <article class="project">
-            <h4>Task Manager</h4>
-            <p>A simple task manager app (CRUD) using localStorage for persistence and JavaScript for interactivity.</p>
-          </article>
-
-          <article class="project">
-            <h4>Firestore Blog (Demo)</h4>
-            <p>A small blog prototype using Firebase (demo) — authentication + posts interface.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" aria-label="Get In Touch">
       <div class="container">
-        <h2>Contact</h2>
+        <h2>Get In Touch</h2>
         <div class="card" style="margin-top:12px">
+          <p style="color:var(--muted);margin-bottom:20px;">Ready to work together? I'm always interested in new opportunities and exciting projects. Let's discuss how I can help bring your ideas to life!</p>
           <form id="contactForm">
-            <input type="text" id="name" placeholder="Your name" required />
-            <input type="email" id="email" placeholder="Your email" required />
-            <textarea id="message" placeholder="Your message" required></textarea>
+            <input type="text" id="name" placeholder="Your name" required aria-label="Your name" />
+            <input type="email" id="email" placeholder="Your email" required aria-label="Your email" />
+            <textarea id="message" placeholder="Your message" required aria-label="Your message"></textarea>
             <button type="submit" class="btn">Send Message</button>
             <p id="formMsg" style="color:var(--muted);margin:6px 0 0"></p>
           </form>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+            <p style="color:var(--muted);margin:0 0 12px;">Or connect with me directly:</p>
+            <div class="social-links" style="justify-content:center;">
+              <a href="https://github.com/praise-mut" target="_blank" rel="noopener" aria-label="GitHub Profile">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://linkedin.com/in/praise-mut" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -165,9 +220,32 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> Praise Mutijima • Built with HTML, CSS & JavaScript</p>
+      <p>© <span id="year"></span> Praise Mutijima • Front-end Developer • Built with HTML, CSS & JavaScript</p>
     </div>
   </footer>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Praise Mutijima",
+    "jobTitle": "Front-end Developer",
+    "description": "Front-end Developer specializing in React, HTML, CSS, JavaScript. Based in Kigali, Rwanda.",
+    "url": "https://praise-mut.github.io",
+    "sameAs": [
+      "https://github.com/praise-mut",
+      "https://linkedin.com/in/praise-mut"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kigali",
+      "addressCountry": "Rwanda"
+    },
+    "knowsAbout": ["React", "JavaScript", "HTML", "CSS", "Java", "SQL", "C Programming"],
+    "alumniOf": "Information Management Program"
+  }
+  </script>
 
   <script>
     // Smooth scroll for internal links
